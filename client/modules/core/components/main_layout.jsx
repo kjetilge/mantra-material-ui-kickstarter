@@ -38,23 +38,8 @@ class MainLayout extends React.Component {
     const {content} = this.props
     return (
         <div>
-          <NavHeader title="Mantra Kickstarter"/>
-          <div style={{height: 64}}></div>
-
-          <span style={{color: MyTheme.palette.textColor}}>
-            Hello World!
-          </span>
-
+          <NavHeader title="Mantra Kickstarter 2"/>
           {content()}
-
-          <Drawer
-            docked={false}
-            open={this.props.navState}
-            onRequestChange={this.props.toggleNav}
-          >
-            <MenuItem>Menu Item</MenuItem>
-            <MenuItem>Menu Item 2</MenuItem>
-          </Drawer>
       </div>
     )
   }

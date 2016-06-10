@@ -1,7 +1,5 @@
-/*
 import React from 'react';
 // import classNames from 'classnames';
-import {Popover, PopoverAnimationVertical} from 'material-ui/Popover';
 
 export default ({links = [], name = 'Empty name'}) => (
   <li className="dropdown">
@@ -28,4 +26,4 @@ export default ({links = [], name = 'Empty name'}) => (
 
     </ul>
   </li>
-);*/
+);

@@ -2,7 +2,7 @@ import React from 'react';
 
 import {navHeaderComposer} from '/client/configs/composers.js';
 
-import NavHeaderBrand from '/client/modules/app/components/Theme/NavHeaderBrand.jsx';
+//import NavHeaderBrand from '/client/modules/app/components/Theme/NavHeaderBrand.jsx';
 import NavHeaderLeftContent from '/client/modules/app/components/Theme/NavHeaderLeftContent.jsx';
 import NavHeaderRightContent from '/client/modules/app/components/Theme/NavHeaderRightContent.jsx';
 
