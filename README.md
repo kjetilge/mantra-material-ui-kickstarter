@@ -1,7 +1,7 @@
 
-# meteor-mantra-kickstarter
+# mantra-material-ui-kickstarter
 
-### bring your meteor mantra development up to speed
+### Meteor mantra using Material-ui.
 
 Please make sure you read [Mantra Specification](https://kadirahq.github.io/mantra/) and visit the [official repository](https://github.com/kadirahq/mantra). Keep in mind that Mantra is an approach to application architecture rather than a framework. It is supposed to keep our options open and not lock us in to any particular library, we are free to choose how manage routing, state management and data-binding. In other words bring your own toolkit: flow router / react router GraphQL, Redux or any other shiny new thing.
 
@@ -22,7 +22,7 @@ Please make sure you read [Mantra Specification](https://kadirahq.github.io/mant
 
 * [meteor astronomy](https://github.com/jagi/meteor-astronomy) models (looking forward to the upcoming v2)
 
-* bootstrap theme module based on [Flatly](https://bootswatch.com/flatly/) with a configuration file, you can replace it or remove if you have other requirements
+* Material theme module with a configuration file, you can replace it or remove if you have other requirements
 
 
 ![screen homepage](public/screens/homepage.png)

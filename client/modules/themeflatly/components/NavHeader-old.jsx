@@ -1,5 +1,5 @@
 import React from 'react';
-
+//comment
 import {navHeaderComposer} from '/client/configs/composers.js';
 
 import NavHeaderBrand from '/client/modules/app/components/Theme/NavHeaderBrand.jsx';
