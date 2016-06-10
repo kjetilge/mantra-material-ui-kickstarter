@@ -29,7 +29,7 @@ export default class extends React.Component {
       <div>
         <FlatButton
           onTouchTap={this.handleTouchTap}
-          label={this.props.userSubReady ? email : "..loading"}
+          label={this.props.userSubReady ? email : "..unlocking"}
         />
         <Popover
           open={this.state.open}

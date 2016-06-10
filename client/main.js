@@ -8,6 +8,7 @@ import commentsModule from './modules/comments';
 import appModule from './modules/app';
 import adminModule from './modules/admin';
 import colorsModule from './modules/colors';
+import testmodModule from './modules/testmod';
 
 // init context
 const context = initContext();
@@ -20,5 +21,6 @@ app.loadModule(commentsModule);
 app.loadModule(appModule);
 app.loadModule(adminModule);
 app.loadModule(colorsModule);
+app.loadModule(testmodModule);
 
 app.init();

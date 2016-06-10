@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import Navigation from './navigation';
 
@@ -20,3 +21,4 @@ const Layout = ({content = () => null }) => (
 );
 
 export default Layout;
+*/

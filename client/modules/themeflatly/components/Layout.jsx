@@ -8,12 +8,7 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import NavBar from './nav_bar.jsx'
 import NavHeader from './NavHeader.jsx'
-import ToolbarWeb from './toolbar_web.jsx'
-import Experiments from './experiments.jsx'
-
-
 import {cyan500} from 'material-ui/styles/colors';
 
 
@@ -29,7 +24,7 @@ const muiTheme = getMuiTheme({
 class MainLayout extends React.Component {
   constructor(props) {
     super(props);
-    injectTapEventPlugin();
+    //injectTapEventPlugin();
   }
 
   getChildContext() {
@@ -43,7 +38,7 @@ class MainLayout extends React.Component {
     const {content} = this.props
     return (
         <div>
-          <NavHeader />
+          <NavHeader title="Mantra Kickstarter"/>
           <div style={{height: 64}}></div>
 
           <span style={{color: MyTheme.palette.textColor}}>

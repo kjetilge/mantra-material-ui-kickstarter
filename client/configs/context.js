@@ -5,7 +5,8 @@ import {ReactiveDict} from 'meteor/reactive-dict';
 import {Tracker} from 'meteor/tracker';
 import {Accounts} from 'meteor/accounts-base';
 import _ from 'lodash';
-
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
 
 const authCommon = function () {
 
@@ -35,6 +36,5 @@ export default function () {
     Tracker,
     Accounts,
     authCommon
-
   };
 }

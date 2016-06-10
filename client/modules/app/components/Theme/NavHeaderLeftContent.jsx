@@ -34,7 +34,7 @@ export default class extends React.Component {
 
     return (
       <div>
-        <FlatButton label="Start" linkButton={true} href="/"/>
+        <FlatButton label="Testmod" linkButton={true} href="/testmod"/>
         <FlatButton label="Blog" linkButton={true} href="/blog"/>
 
         { navColors }

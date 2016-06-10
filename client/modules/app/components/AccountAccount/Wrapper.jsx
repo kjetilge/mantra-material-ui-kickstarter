@@ -24,15 +24,11 @@ export default class extends React.Component {
 
                     <h2 className="font-bold">Account </h2>
 
-
-
-
                   </div>
               </div>
           </div>
           <hr/>
       </div>
-
     );
   }
 }

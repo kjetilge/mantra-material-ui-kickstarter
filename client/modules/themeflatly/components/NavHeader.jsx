@@ -51,7 +51,7 @@ const styles = {
     marginTop:5,
     left: {
       position:'absolute',
-      left: 50
+      left: 300
     }
   }
 }
