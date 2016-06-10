@@ -38,7 +38,7 @@ class MainLayout extends React.Component {
     const {content} = this.props
     return (
         <div>
-          <NavHeader title="Mantra Kickstarter 2"/>
+          <NavHeader title="Mantra MUI Kickstarter"/>
           {content()}
       </div>
     )

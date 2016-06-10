@@ -1,6 +1,14 @@
 import React from 'react';
-
+import ReactDOM from 'react-dom';
+//import getMuiTheme from 'material-ui/styles/getMuiTheme'
+//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup,
+    FormsySelect, FormsyText, FormsyTime, FormsyToggle } from 'formsy-material-ui/lib';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+import MenuItem from 'material-ui/MenuItem';
 import Formsy from 'formsy-react';
+
 import {
   // Checkbox,
   // CheckboxGroup,
@@ -14,21 +22,30 @@ import {
 } from 'formsy-react-components';
 
 export default React.createClass({
-
+  //mixins: [Formsy.Mixin],
+  componentDidMount() {
+    console.log("mounted")
+  },
   resetForm() {
     this.refs.form.reset();
   },
 
   validSubmit(data) {
-    // console.log('validSubmit', data);
+    console.log('validSubmit', data);
+    //console.log("this.refs['email']", this.refs.email)
+    //fieldVal = this.refs.email.getDOMNode().value;
     this.props.submitAction(data.email, data.password);
   },
-
+  onChange() {
+    //console.log("a change")
+  },
   // invalidSubmit(data) {
   invalidSubmit() {
-    // console.log('invalidSubmit', data);
+     console.log('invalidSubmit', data);
   },
-
+  submitForm(data) {
+    alert(JSON.stringify(data, null, 4));
+  },
   enableButton() {
     // console.log('enable button');
     this.setState({ canSubmit: true });
@@ -37,6 +54,11 @@ export default React.createClass({
   disableButton() {
     // console.log('disable button');
     this.setState({ canSubmit: false });
+  },
+  onFocus() {
+    const email = $("input")[0]
+    email.removeAttribute('readonly')
+    console.log("Focus")
   },
 
   getInitialState() {
@@ -48,8 +70,22 @@ export default React.createClass({
     };
   },
 
-  render() {
+  styles: {
+    paperStyle: {
+      width: 300,
+      margin: 'auto',
+      padding: 20,
+    },
+    switchStyle: {
+      marginBottom: 16,
+    },
+    submitStyle: {
+      marginTop: 32,
+    },
+  },
 
+  render() {
+    let {paperStyle, switchStyle, submitStyle } = this.styles;
     let formClassName = 'vertical m-t';
 
     var sharedProps = {
@@ -58,65 +94,67 @@ export default React.createClass({
       disabled: this.state.disabled
     };
 
+    const hideAutoFillColorStyle = {
+      WebkitBoxShadow: '0 0 0 1000px white inset'
+    };
+    const hintStyle = { zIndex: '1' };
+
     const {error} = this.props;
 
     return (
 
-        <Formsy.Form className={formClassName}
-          onValidSubmit={this.validSubmit}
-          onInvalidSubmit={this.invalidSubmit}
-          onValid={this.enableButton}
-          onInvalid={this.disableButton}
-          onChange={this.onChange}
-          ref="form">
+         <Paper style={paperStyle}>
+           <Formsy.Form
+            className={formClassName}
+             onValidSubmit={this.validSubmit}
+             onInvalidSubmit={this.invalidSubmit}
+             onValid={this.enableButton}
+             onInvalid={this.disableButton}
+             onChange={this.onChange}
+             ref="form"
+             autoComplete = "off"
+             autoCorrect="off"
+             underlineFocusStyle={{borderColor: "white"}}
+             autoCapitalize="off"
+             >
+              {error ? <p style={{color: 'red'}}>{error}</p> : null}
 
-          <fieldset>
-            {error ?
-            <div className="alert alert-danger" onClick="">
-              <span className="octicon octicon-megaphone" ></span>
-              {error}
-            </div> : null }
-
-            <Input
+              <FormsyText
                 {...sharedProps}
                 name="email"
+                ref="email"
                 value=""
                 label="Email"
-                type="email"
+                type="search"
                 placeholder="This is an email input."
-
-                autoComplete="off"
-
+                autocomplete="false"
+                readOnly
+                onFocus={this.onFocus}
                 validations="isEmail"
-                validationError="Please provide a valid email address."
+                validationError="Vennligs benytt en gyldig epostadresse."
+              />
 
-            />
-            <Input
-                {...sharedProps}
-                name="password"
-                value=""
-                label="Password"
-                type="password"
-                placeholder="Type in your password"
+              <FormsyText
+                  {...sharedProps}
+                  name="password"
+                  value=""
+                  label="Password"
+                  type="password"
+                  placeholder="Type in your password"
+                  validations="minLength:4"
+                  validationError="Passordet ser litt kort ut, prøv med noe lengre"
+              />
 
-                validations="minLength:4"
-                validationError="That password looks a bit short, try again"
-
-            />
-
-          </fieldset>
-
-          <Row layout={this.state.layout}>
-
-            <input className="btn btn-primary block full-width m-b"
-              formNoValidate={true}
-              disabled={!this.state.canSubmit}
-              type="submit"
-              defaultValue="Login" />
-
-          </Row>
-
-        </Formsy.Form>
+              <Row layout={this.state.layout}>
+                  <RaisedButton
+                    formNoValidate={true}
+                    disabled={!this.state.canSubmit}
+                    type="submit"
+                    label="Login"
+                  />
+              </Row>
+            </Formsy.Form>
+         </Paper>
 
     );
   }

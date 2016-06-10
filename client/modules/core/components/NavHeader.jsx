@@ -22,6 +22,16 @@ import FlatButton from 'material-ui/FlatButton';
 //import ToolbarWeb from '../containers/toolbar_web'
 
 // http://www.gitterforum.com/discussion/callemall-material-ui?page=388
+const styles = {
+  appBarElements: {
+    marginTop:8,
+    left: {
+      position:'absolute',
+      left: 420
+    }
+  }
+}
+
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
@@ -46,15 +56,7 @@ class NavBar extends React.Component {
     );
   }
 }
-const styles = {
-  appBarElements: {
-    marginTop:5,
-    left: {
-      position:'absolute',
-      left: 300
-    }
-  }
-}
+
 
 NavBar.propTypes = {
   title: React.PropTypes.string,
