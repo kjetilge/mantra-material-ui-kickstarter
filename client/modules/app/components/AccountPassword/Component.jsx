@@ -8,7 +8,6 @@ import MenuItem from 'material-ui/MenuItem';
 import Formsy from 'formsy-react';
 
 export default React.createClass({
-
   resetForm() {
     // console.log('resetForm');
     this.refs.form.reset();
@@ -29,7 +28,7 @@ export default React.createClass({
   },
 
   enableButton() {
-    // console.log('enable button');
+    console.log('enable button');
     this.setState({ canSubmit: true });
   },
 
@@ -47,6 +46,20 @@ export default React.createClass({
       canSubmit: false,
       token: this.props.getToken()
     };
+  },
+  isValidValue (val) {
+    return true
+  },
+  handleChange(event) {
+    this.setState({
+      value: event.currentTarget.value,
+    });
+    if (this.isValidValue(event.target.value)) {
+      this.setValue(event.target.value);
+    }
+    if (this.props.onChange) {
+      this.props.onChange(event, event.currentTarget.value);
+    }
   },
 
   styles: {
@@ -97,28 +110,27 @@ export default React.createClass({
 
             <FormsyText
                 {...sharedProps}
+                updateImmediately
                 name="password1"
                 value=""
                 label="Password"
                 type="password"
-
                 validations="minLength:8"
                 validationError="Passordet må bestå av minst 8 karakterer"
                 placeholder="Velg et passord"
             />
             <FormsyText
                 {...sharedProps}
+                updateImmediately
                 name="password2"
                 value=""
                 label="Bekreft passord"
                 type="password"
-
-
                 validations="equalsField:password1"
                 validationErrors={{
                   equalsField: 'Passwords must match.'
                 }}
-
+                onChange={e => this.handleChange(e)}
                 placeholder="Bekreft passord"
             />
 
