@@ -19,12 +19,7 @@ export default class extends React.Component {
 
   displayUser() {
     const {email} = this.props;
-    console.log("email", email)
-    if(this.props.userSubReady) {
-      console.log("READY")
-    } else {
-      console.log("not ready")
-    }
+
     return (
       <div>
         <FlatButton
@@ -57,6 +52,24 @@ export default class extends React.Component {
       </div>
     );
   }
+  mobileDisplayUser() {
+    return (
+      <div>
+        <MenuItem primaryText="Profile" linkButton href="/profile" onTouchTap={this.handleRequestClose}/>
+        <MenuItem primaryText="Account" linkButton href="/account" onTouchTap={this.handleRequestClose}/>
+        <MenuItem primaryText="Logout" linkButton href="/logout" onTouchTap={this.handleRequestClose}/>
+      </div>
+    )
+  }
+
+  mobileDisplayGuest() {
+    return (
+      <div>
+        <MenuItem primaryText="Register" linkButton href="/register" />
+        <MenuItem primaryText="Login" linkButton href="/login" onTouchTap={this.handleRequestClose}/>
+      </div>
+    );
+  }
 
   handleTouchTap (event) {
     // This prevents ghost click.
@@ -75,9 +88,12 @@ export default class extends React.Component {
 
   render() {
     const {
-      userId
+      userId,
+      mobileView
     } = this.props;
-
+    //console.log("Mobile ?", mobileView)
+    if(mobileView)
+      return userId ? this.mobileDisplayUser() : this.mobileDisplayGuest();
     return userId ? this.displayUser() : this.displayGuest();
   }
 }

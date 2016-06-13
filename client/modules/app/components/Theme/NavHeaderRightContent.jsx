@@ -16,7 +16,7 @@ export default class extends React.Component {
       userId,
       user,
       email,
-      profile
+      profile,
     } = this.props;
 
     return (

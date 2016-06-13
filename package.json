@@ -42,7 +42,8 @@
     "react-bootstrap": "0.28.3",
     "react-dom": "^15.0.0",
     "react-mounter": "^1.2.0",
-    "react-tap-event-plugin": "^1.0.0"
+    "react-tap-event-plugin": "^1.0.0",
+    "react-with-context": "^1.0.2"
   },
   "private": true
 }

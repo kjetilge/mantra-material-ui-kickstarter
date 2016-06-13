@@ -8,7 +8,8 @@ import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import NavHeader from './NavHeader.jsx'
+import NavHeader from '../containers/nav_header.js'
+import SideNav from '../containers/side_nav.js'
 import {cyan500} from 'material-ui/styles/colors';
 
 
@@ -38,7 +39,8 @@ class MainLayout extends React.Component {
     const {content} = this.props
     return (
         <div>
-          <NavHeader title="Mantra MUI Kickstarter"/>
+          <NavHeader title="3M Kickstarter"/>
+          <SideNav />
           {content()}
       </div>
     )

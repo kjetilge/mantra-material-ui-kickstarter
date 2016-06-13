@@ -19,6 +19,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
+
 //import ToolbarWeb from '../containers/toolbar_web'
 
 // http://www.gitterforum.com/discussion/callemall-material-ui?page=388
@@ -35,9 +36,32 @@ const styles = {
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
+    /*
+    this.state = {
+      mobileView: window.innerWidth < 1024,
+    };*/
   }
 
+  componentDidMount() {
+    window.addEventListener('resize', this.props.toggleMobileView);
+    console.log("this.props.toggleMobileView", this.props.toggleMobileView())
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.props.toggleMobileView);
+  }
+
+/*
+  handleToggle() {
+    console.log("toggle", this.props)
+    //this.setState({open: !this.state.open});
+    this.props.toggleSideNav
+  }
+
+  handleClose() { this.setState({open: false}); }
+*/
   render() {
+    //console.log("this.props2", this.props)
     const appBarElements = (
       <div style={styles.appBarElements}>
         <div style={styles.appBarElements.left}>
@@ -46,11 +70,22 @@ class NavBar extends React.Component {
           <NavHeaderRightContentCtx />
       </div>
     )
+    const mobileRightMenu = (
+      <IconMenu
+        iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
+        anchorOrigin={{horizontal: 'right', vertical: 'top'}}
+        targetOrigin={{horizontal: 'right', vertical: 'top'}}
+
+      >
+        <NavHeaderRightContentCtx />
+      </IconMenu>
+      )
     return (
       <AppBar
         title={this.props.title}
-        onLeftIconButtonTouchTap={this.props.toggleNav}
-        iconElementRight={appBarElements}
+        showMenuIconButton={this.props.mobileView}
+        onLeftIconButtonTouchTap={this.props.toggleSideNav}
+        iconElementRight={this.props.mobileView ? mobileRightMenu : appBarElements}
         style={{height:72, paddingTop:4}}
       />
     );
@@ -60,7 +95,7 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
   title: React.PropTypes.string,
-  toggleNav: React.PropTypes.func
+  toggleSideNav: React.PropTypes.func
 }
 NavBar.defaultProps = {
 

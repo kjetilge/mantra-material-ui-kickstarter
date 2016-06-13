@@ -1,8 +1,8 @@
 import React from 'react';
 
-// import dataComposer from '../../lib/AccountRegister.js';
+import dataComposer from '../../lib/AccountPassword.js';
 import Component from './Component.jsx';
-// const ComponentCtx = dataComposer(Component);
+const ComponentCtx = dataComposer(Component);
 
 export default class extends React.Component {
 
@@ -18,19 +18,28 @@ export default class extends React.Component {
                     Nam convallis volutpat massa ac ullamcorper.
                   </p>
 
+
               </div>
               <div className="col-md-6">
                   <div className="ibox-content">
 
-                    <h2 className="font-bold">Forgot password</h2>
+                    <h2 className="font-bold">Login</h2>
                     <p>
-                      Enter your email address and your password will be reset and emailed to you.
+                        Enter your email address and your password.
                     </p>
 
-                    <Component />
 
-                    <p className="text-muted text-center"><small>Remember your password?</small></p>
-                    <a className="btn btn-sm btn-white btn-block" href="/login">Login</a>
+                    <ComponentCtx />
+
+                    <a href="/password">
+                        <small>Forgot password?</small>
+                    </a>
+
+                    <p className="text-muted text-center">
+                        <small>Do not have an account?</small>
+                    </p>
+                    <a className="btn btn-sm btn-white btn-block" href="/register">Create an account</a>
+
 
                   </div>
               </div>

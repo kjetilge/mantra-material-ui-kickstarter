@@ -2,6 +2,8 @@
 export default {
 
   login({Meteor, LocalState, FlowRouter, Accounts}, email, password) {
+    console.log("email",email)
+    console.log("password",password)
 
     if (!email || !password) {
       return LocalState.set('LOGIN_ERROR', 'Login & Password are required!');
@@ -38,10 +40,6 @@ export default {
       }
       FlowRouter.go('/account');
     });
-  },
-
-  registerErrorClear({LocalState}) {
-    return LocalState.set('REGISTER_ERROR', null);
   },
 
   forgotPassword({Meteor, LocalState, FlowRouter, Accounts}, email) {
@@ -82,7 +80,7 @@ export default {
     return LocalState.set('REGISTER_ERROR', null);
   },
   getToken({LocalState, FlowRouter}) {
-    console.log(FlowRouter.getParam('token'))
+    console.log("FlowRouter.getParam('token')", FlowRouter.getParam('token'))
     const token = FlowRouter.getParam('token')
     if(!!token) {
       return FlowRouter.getParam('token')
@@ -90,6 +88,6 @@ export default {
       return false;
     }
 
-  }  
+  }
 
 };

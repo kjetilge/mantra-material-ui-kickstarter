@@ -21,10 +21,8 @@ export default function (injectDeps, {FlowRouter}) {
 import React from 'react';
 import {mount} from 'react-mounter';
 
-import {Accounts} from 'meteor/accounts-base';
 
-import MyContainer from './containers/my_container.js'
-import Badges from './components/badges.jsx'
+import {Accounts} from 'meteor/accounts-base';
 
 import {
   AuthCheck,
@@ -33,26 +31,25 @@ import {
   //NotFound,
 } from '/client/configs/components.js';
 
+/*
+import Register from '/client/modules/app/components/AccountRegister/Wrapper.jsx';
+import Login from '/client/modules/app//components/AccountLogin/Wrapper.jsx';
+import Password from '/client/modules/app//components/AccountPassword/Wrapper.jsx';
+import Profile from '/client/modules/app//components/AccountProfile/Wrapper.jsx';
+import Account from '/client/modules/app//components/AccountAccount/Wrapper.jsx';
+*/
 
+import CommentList from './components/comment_list.js'
 export default function (injectDeps, {FlowRouter}) {
 
   const AuthCheckCtx = injectDeps(AuthCheck);
 
-  FlowRouter.route('/testmod', {
-    name: 'testmod',
+  FlowRouter.route('/comments', {
+    name: 'app.home',
     action() {
       mount(AuthCheckCtx, {
-        LayoutDefault, content: () => (<MyContainer />),
-      });
-    }
-  });
-
-
-  FlowRouter.route('/badges', {
-    name: 'badges',
-    action() {
-      mount(AuthCheckCtx, {
-        LayoutDefault, content: () => (<Badges />),
+        LayoutDefault, content: () => (<CommentList />),
+        requireUserId: true
       });
     }
   });

@@ -66,11 +66,21 @@ export default function (injectDeps, {FlowRouter}) {
     }
   });
 
+  FlowRouter.route('/reset-password/:token', {
+    name: 'app.reset-password',
+    action(params) {
+      console.log("reset token param", params.token)
+      mount(AuthCheckCtx, {
+        LayoutDefault, content: () => (<Password token="hello token"/>)
+      });
+    }
+  });
+
   FlowRouter.route('/password', {
     name: 'app.password',
     action() {
       mount(AuthCheckCtx, {
-        LayoutDefault, content: () => (<Password />)
+        LayoutDefault, content: () => (<Password token={false}/>)
       });
     }
   });

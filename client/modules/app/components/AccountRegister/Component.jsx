@@ -1,18 +1,12 @@
 import React from 'react';
 // import ReactDOM from 'react-dom';
+import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup,
+    FormsySelect, FormsyText, FormsyTime, FormsyToggle } from 'formsy-material-ui/lib';
+import Paper from 'material-ui/Paper';
+import RaisedButton from 'material-ui/RaisedButton';
+import MenuItem from 'material-ui/MenuItem';
 
 import Formsy from 'formsy-react';
-import {
-  // Checkbox,
-  // CheckboxGroup,
-  Input,
-  // RadioGroup,
-  Row,
-  // Select,
-  // File,
-  // Textarea
-
-} from 'formsy-react-components';
 
 export default React.createClass({
 
@@ -49,10 +43,22 @@ export default React.createClass({
     };
   },
 
+  styles: {
+    paperStyle: {
+      width: 300,
+      margin: 'auto',
+      padding: 20,
+    },
+    submitStyle: {
+      marginTop: 32,
+    },
+  },
+
   render() {
 
     let formClassName = 'vertical m-t';
-
+    const {paperStyle, submitStyle } = this.styles;
+    
     var sharedProps = {
       layout: this.state.layout,
       validatePristine: this.state.validatePristine,
@@ -62,7 +68,7 @@ export default React.createClass({
     const {error} = this.props;
 
     return (
-
+      <Paper style={paperStyle}>
         <Formsy.Form className={formClassName}
           onValidSubmit={this.validSubmit}
           onInvalidSubmit={this.invalidSubmit}
@@ -71,14 +77,9 @@ export default React.createClass({
           onChange={this.onChange}
           ref="form">
 
-          <fieldset>
-            {error ?
-            <div className="alert alert-danger" onClick="">
-              <span className="octicon octicon-megaphone" ></span>
-              {error}
-            </div> : null }
+            {error ? <p style={{color: 'red'}}>{error}</p> : null}
 
-            <Input
+            <FormsyText
                 {...sharedProps}
                 name="email"
                 value=""
@@ -90,11 +91,10 @@ export default React.createClass({
 
                 validations="isEmail"
                 validationError="Please provide a valid email address."
-
             />
 
 
-            <Input
+            <FormsyText
                 {...sharedProps}
                 name="password1"
                 value=""
@@ -105,7 +105,8 @@ export default React.createClass({
                 validationError="Your password must be at least 8 characters long."
                 placeholder="Choose a password"
             />
-            <Input
+
+            <FormsyText
                 {...sharedProps}
                 name="password2"
                 value=""
@@ -121,20 +122,16 @@ export default React.createClass({
                 placeholder="Retype password"
             />
 
-          </fieldset>
 
-          <Row layout={this.state.layout}>
-
-            <input className="btn btn-primary block full-width m-b"
+            <RaisedButton
               formNoValidate={true}
               disabled={!this.state.canSubmit}
               type="submit"
-              defaultValue="Register" />
-
-          </Row>
+              label="Register"
+            />
 
         </Formsy.Form>
-
+        </Paper>
     );
   }
 });

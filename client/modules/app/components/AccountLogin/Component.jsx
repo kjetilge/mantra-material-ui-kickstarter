@@ -1,7 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import getMuiTheme from 'material-ui/styles/getMuiTheme'
-//import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { FormsyCheckbox, FormsyDate, FormsyRadio, FormsyRadioGroup,
     FormsySelect, FormsyText, FormsyTime, FormsyToggle } from 'formsy-material-ui/lib';
 import Paper from 'material-ui/Paper';
@@ -9,17 +7,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import MenuItem from 'material-ui/MenuItem';
 import Formsy from 'formsy-react';
 
-import {
-  // Checkbox,
-  // CheckboxGroup,
-  Input,
-  // RadioGroup,
-  Row,
-  // Select,
-  // File,
-  // Textarea
 
-} from 'formsy-react-components';
 
 export default React.createClass({
   //mixins: [Formsy.Mixin],
@@ -62,6 +50,7 @@ export default React.createClass({
   },
 
   getInitialState() {
+    //console.log("login props", this.props)
     return {
       layout: 'vertical',
       validatePristine: true,
@@ -76,17 +65,14 @@ export default React.createClass({
       margin: 'auto',
       padding: 20,
     },
-    switchStyle: {
-      marginBottom: 16,
-    },
     submitStyle: {
       marginTop: 32,
     },
   },
 
   render() {
-    let {paperStyle, switchStyle, submitStyle } = this.styles;
-    let formClassName = 'vertical m-t';
+
+    const {paperStyle, submitStyle } = this.styles;
 
     var sharedProps = {
       layout: this.state.layout,
@@ -105,7 +91,6 @@ export default React.createClass({
 
          <Paper style={paperStyle}>
            <Formsy.Form
-            className={formClassName}
              onValidSubmit={this.validSubmit}
              onInvalidSubmit={this.invalidSubmit}
              onValid={this.enableButton}
@@ -145,14 +130,15 @@ export default React.createClass({
                   validationError="Passordet ser litt kort ut, prøv med noe lengre"
               />
 
-              <Row layout={this.state.layout}>
-                  <RaisedButton
-                    formNoValidate={true}
-                    disabled={!this.state.canSubmit}
-                    type="submit"
-                    label="Login"
-                  />
-              </Row>
+
+              <RaisedButton
+                style={submitStyle}
+                formNoValidate={true}
+                disabled={!this.state.canSubmit}
+                type="submit"
+                label="Login"
+              />
+
             </Formsy.Form>
          </Paper>
 

@@ -8,5 +8,8 @@ module.exports = {
         include: path.resolve(__dirname, '../')
       }
     ]
-  }
+  },
+  resolve: {
+     extensions: ['', '.js', '.jsx'],
+  },  
 };

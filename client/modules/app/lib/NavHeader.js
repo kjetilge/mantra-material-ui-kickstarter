@@ -3,7 +3,6 @@ import {useDeps, composeWithTracker, composeAll} from 'mantra-core';
 export const _navHeaderComposer = ({context}, onData) => {
 
   const {LocalState, authCommon} = context();
-  // const {LocalState} = context();
 
   const {
     userSubReady,
@@ -15,6 +14,7 @@ export const _navHeaderComposer = ({context}, onData) => {
 
   const LoadDummyData = LocalState.get('Developer.LoadDummyData');
   // const DeveloperMode = LocalState.get('Developer.DeveloperMode');
+  const mobileView = LocalState.get('MOBILE_VIEW')
 
   if (LoadDummyData) {
     onData(null, {
@@ -28,7 +28,8 @@ export const _navHeaderComposer = ({context}, onData) => {
       userId,
       user,
       email,
-      profile
+      profile,
+      mobileView
     });
 
   }

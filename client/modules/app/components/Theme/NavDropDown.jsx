@@ -34,10 +34,8 @@ export default class extends React.Component {
   };
 
   render () {
-    console.log("props", this.props)
     const links = this.props.links || []
     const name = this.props.name || 'Empty name'
-    console.log("links", links)
 
     return (
       <span>
@@ -60,7 +58,6 @@ export default class extends React.Component {
                 link.url = link.url ? link.url : '';
                 link.name = link.name ? link.name : '';
                 // let classes = classNames(link.classes);
-
                 let response = '';
                 if (link.url) {
                   response = <MenuItem
