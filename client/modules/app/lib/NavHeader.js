@@ -36,7 +36,8 @@ export const _navHeaderComposer = ({context}, onData) => {
 };
 
 // export const _depsMapper = (context, actions) => ({
-export const _depsMapper = (context) => ({
+export const _depsMapper = (context, actions) => ({
+  toggleMobileRightMenu: actions.user_controls.toggleMobileRightMenu,
   context: () => context
 });
 

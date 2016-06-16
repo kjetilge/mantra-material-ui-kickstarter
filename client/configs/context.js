@@ -1,4 +1,4 @@
-import * as Collections from '/lib/collections';
+import * as Collections from '../../lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {FlowRouter} from 'meteor/kadira:flow-router';
 import {ReactiveDict} from 'meteor/reactive-dict';
@@ -8,7 +8,7 @@ import _ from 'lodash';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 //run injectTapEventPlugin only once
-injectTapEventPlugin();
+injectTapEventPlugin({});
 
 const authCommon = function () {
 

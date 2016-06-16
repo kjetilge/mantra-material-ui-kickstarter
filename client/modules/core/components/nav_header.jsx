@@ -1,10 +1,10 @@
 import React from 'react';
 
-import {navHeaderComposer} from '/client/configs/composers.js';
+import {navHeaderComposer} from '../../../configs/composers.js';
 
 //import NavHeaderBrand from '/client/modules/app/components/Theme/NavHeaderBrand.jsx';
-import NavHeaderLeftContent from '/client/modules/app/components/Theme/NavHeaderLeftContent.jsx';
-import NavHeaderRightContent from '/client/modules/app/components/Theme/NavHeaderRightContent.jsx';
+import NavHeaderLeftContent from './Theme/NavHeaderLeftContent.jsx';
+import NavHeaderRightContent from './Theme/NavHeaderRightContent.jsx';
 
 const NavHeaderLeftContentCtx = navHeaderComposer(NavHeaderLeftContent);
 const NavHeaderRightContentCtx = navHeaderComposer(NavHeaderRightContent);
@@ -20,9 +20,6 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import MenuItem from 'material-ui/MenuItem';
 import FlatButton from 'material-ui/FlatButton';
 
-//import ToolbarWeb from '../containers/toolbar_web'
-
-// http://www.gitterforum.com/discussion/callemall-material-ui?page=388
 const styles = {
   appBarElements: {
     marginTop:8,
@@ -36,32 +33,18 @@ const styles = {
 class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    /*
-    this.state = {
-      mobileView: window.innerWidth < 1024,
-    };*/
   }
 
   componentDidMount() {
     window.addEventListener('resize', this.props.toggleMobileView);
-    console.log("this.props.toggleMobileView", this.props.toggleMobileView())
+    this.props.toggleMobileView()
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.props.toggleMobileView);
   }
 
-/*
-  handleToggle() {
-    console.log("toggle", this.props)
-    //this.setState({open: !this.state.open});
-    this.props.toggleSideNav
-  }
-
-  handleClose() { this.setState({open: false}); }
-*/
   render() {
-    //console.log("this.props2", this.props)
     const appBarElements = (
       <div style={styles.appBarElements}>
         <div style={styles.appBarElements.left}>
@@ -70,16 +53,21 @@ class NavBar extends React.Component {
           <NavHeaderRightContentCtx />
       </div>
     )
+
     const mobileRightMenu = (
       <IconMenu
         iconButtonElement={<IconButton><MoreVertIcon /></IconButton>}
         anchorOrigin={{horizontal: 'right', vertical: 'top'}}
         targetOrigin={{horizontal: 'right', vertical: 'top'}}
-
+        open={this.props.mobileRightMenuOpen}
+        onRequestChange={this.props.toggleMobileRightMenu}
       >
+      <MenuItem primaryText="Refresh" />
+        <MenuItem primaryText="Send feedback" />
         <NavHeaderRightContentCtx />
       </IconMenu>
       )
+
     return (
       <AppBar
         title={this.props.title}
@@ -95,10 +83,11 @@ class NavBar extends React.Component {
 
 NavBar.propTypes = {
   title: React.PropTypes.string,
-  toggleSideNav: React.PropTypes.func
+  toggleSideNav: React.PropTypes.func,
+  mobileRightMenuOpen: React.PropTypes.bool
 }
 NavBar.defaultProps = {
-
+  mobileRightMenuOpen: false
 }
 
 export default NavBar;

@@ -29,7 +29,7 @@ import {
   LayoutDefault,
   //Simplest,
   //NotFound,
-} from '/client/configs/components.js';
+} from '../../configs/components.js';
 
 /*
 import Register from '/client/modules/app/components/AccountRegister/Wrapper.jsx';

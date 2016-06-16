@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Component from './Component.jsx';
-import {authComposer} from '/client/configs/composers.js';
+import {authComposer} from '../../../../../client/configs/composers.js';
 const ComponentCtx = authComposer(Component);
 
 import AuthLoading from '../AuthLoading/Wrapper.jsx';

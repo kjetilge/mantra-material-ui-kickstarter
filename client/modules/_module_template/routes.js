@@ -6,7 +6,7 @@ import {
   AuthCheck,
   LayoutDefault,
   Simplest,
-} from '/client/configs/components.js';
+} from '../../configs/components.js';
 
 export default function (injectDeps, {FlowRouter}) {
 

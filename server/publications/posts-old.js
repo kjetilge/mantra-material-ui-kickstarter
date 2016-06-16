@@ -1,8 +1,9 @@
-import {Posts, Comments} from '/lib/collections';
+//import {Posts, Comments} from '/lib/collections';
 import {Meteor} from 'meteor/meteor';
 import {check} from 'meteor/check';
 
 export default function () {
+  /*
   Meteor.publish('posts.list', function () {
     const selector = {};
     const options = {
@@ -25,4 +26,5 @@ export default function () {
     const selector = {postId};
     return Comments.find(selector);
   });
+  */
 }

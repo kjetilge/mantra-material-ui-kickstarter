@@ -37,7 +37,16 @@ export default {
     Accounts.createUser({email, password: password1}, (err) => {
       if (err && err.reason) {
         return LocalState.set('REGISTER_ERROR', err.reason);
+      } else {
+        Meteor.call( 'sendVerificationLink', ( error, response ) => {
+          if ( error ) {
+            Bert.alert( error.reason, 'danger' );
+          } else {
+            Bert.alert( 'Welcome!', 'success' );
+          }
+        });
       }
+
       FlowRouter.go('/account');
     });
   },

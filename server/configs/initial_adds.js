@@ -1,4 +1,5 @@
-import {Posts} from '/lib/collections';
+/*
+import {Posts} from './lib/collections';
 
 export default function () {
   if (!Posts.findOne()) {
@@ -8,4 +9,4 @@ export default function () {
       Posts.insert({title, content});
     }
   }
-}
+}*/

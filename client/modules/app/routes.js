@@ -7,7 +7,7 @@ import {
   LayoutDefault,
   Simplest,
   NotFound,
-} from '/client/configs/components.js';
+} from '../../configs/components.js';
 
 import Register from './components/AccountRegister/Wrapper.jsx';
 import Login from './components/AccountLogin/Wrapper.jsx';

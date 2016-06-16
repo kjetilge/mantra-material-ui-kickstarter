@@ -6,7 +6,7 @@ import {
   AuthCheck,
   LayoutDefault,
   Simplest,
-} from '/client/configs/components.js';
+} from '../../configs/components.js';
 
 export default function (injectDeps, {FlowRouter}) {
 
@@ -27,6 +27,15 @@ export default function (injectDeps, {FlowRouter}) {
     action() {
       mount(AuthCheckCtx, {
         LayoutDefault, content: () => (<Simplest title="Color add"/>)
+      });
+    }
+  });
+
+  FlowRouter.route('/colors/rules', {
+    name: 'colors.rulesd',
+    action() {
+      mount(AuthCheckCtx, {
+        LayoutDefault, content: () => (<Simplest title="Color rules"/>)
       });
     }
   });
