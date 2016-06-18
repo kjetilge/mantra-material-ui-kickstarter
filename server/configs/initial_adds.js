@@ -9,4 +9,5 @@ export default function () {
       Posts.insert({title, content});
     }
   }
-}*/
+}
+*/
